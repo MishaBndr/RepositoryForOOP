@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Русские замены для ключевых слов (оставляем те, что полезны)
+
 #define число int
 #define безВозврата void
 #define строка std::string
@@ -19,7 +19,6 @@
 #define Вектор std::vector
 #define неизменный const
 
-// Локализация/кодировка — можно оставить как макросы, если удобнее
 #define локализация setlocale(LC_ALL, "Russian")
 #define кодВывода SetConsoleOutputCP(1251)
 #define кодВвода SetConsoleCP(1251)
@@ -30,4 +29,5 @@
 
 безВозврата Вывести(неизменный T& значение) {
     std::cout << значение << std::endl;
+
 };
