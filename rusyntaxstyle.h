@@ -1,32 +1,33 @@
-#pragma once
-#define число int
-#define безВозврата void
-#define строка std::string
-#define публичное public
-#define защищённое protected
-#define класс class
-#define файлДляЧтения ifstream
-#define файлДляЗаписи ofstream
-#define вернуть return
-#define новаяПамять new
-#define использовать using
-#define пространствоИмён namespace
-#define виртуально virtual
-#define главнаяФункция main
-#define локализация setlocale(LC_ALL, "Russian")
-#define кодВывода SetConsoleOutputCP(1251)
-#define кодВвода SetConsoleCP(1251)
-#define рандомизировать srand(static_cast<unsigned>(time(0)))
-#define шаблон template
-#define имяТипа typename
-#define неизменный const
-#define для for
-#define Вектор std::vector
-#define приватное private
+п»ї#pragma once
+// Р СѓСЃСЃРєРёРµ Р·Р°РјРµРЅС‹ РґР»СЏ РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ (РѕСЃС‚Р°РІР»СЏРµРј С‚Рµ, С‡С‚Рѕ РїРѕР»РµР·РЅС‹)
+#define С‡РёСЃР»Рѕ int
+#define Р±РµР·Р’РѕР·РІСЂР°С‚Р° void
+#define СЃС‚СЂРѕРєР° std::string
+#define РїСѓР±Р»РёС‡РЅРѕРµ public
+#define Р·Р°С‰РёС‰С‘РЅРЅРѕРµ protected
+#define РїСЂРёРІР°С‚РЅРѕРµ private
+#define РєР»Р°СЃСЃ class
+#define РЅРѕРІР°СЏРџР°РјСЏС‚СЊ new
+#define РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕРРјС‘РЅ namespace
+#define РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ using
+#define РІРёСЂС‚СѓР°Р»СЊРЅРѕ virtual
+#define РіР»Р°РІРЅР°СЏР¤СѓРЅРєС†РёСЏ main
+#define РІРµСЂРЅСѓС‚СЊ return
+#define С€Р°Р±Р»РѕРЅ template
+#define РёРјСЏРўРёРїР° typename
+#define РґР»СЏ for
+#define Р’РµРєС‚РѕСЂ std::vector
+#define РЅРµРёР·РјРµРЅРЅС‹Р№ const
+
+// Р›РѕРєР°Р»РёР·Р°С†РёСЏ/РєРѕРґРёСЂРѕРІРєР° вЂ” РјРѕР¶РЅРѕ РѕСЃС‚Р°РІРёС‚СЊ РєР°Рє РјР°РєСЂРѕСЃС‹, РµСЃР»Рё СѓРґРѕР±РЅРµРµ
+#define Р»РѕРєР°Р»РёР·Р°С†РёСЏ setlocale(LC_ALL, "Russian")
+#define РєРѕРґР’С‹РІРѕРґР° SetConsoleOutputCP(1251)
+#define РєРѕРґР’РІРѕРґР° SetConsoleCP(1251)
+#define СЂР°РЅРґРѕРјРёР·РёСЂРѕРІР°С‚СЊ srand(static_cast<unsigned>(time(0)))
 #include <iostream>
 
-шаблон <имяТипа T>
+С€Р°Р±Р»РѕРЅ <РёРјСЏРўРёРїР° T>
 
-безВозврата Вывести(неизменный T& значение) {
-    std::cout << значение << std::endl;
+Р±РµР·Р’РѕР·РІСЂР°С‚Р° Р’С‹РІРµСЃС‚Рё(РЅРµРёР·РјРµРЅРЅС‹Р№ T& Р·РЅР°С‡РµРЅРёРµ) {
+    std::cout << Р·РЅР°С‡РµРЅРёРµ << std::endl;
 };
