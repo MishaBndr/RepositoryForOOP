@@ -20,6 +20,13 @@ public:
         quantity_of_humans++;
     }
 
+    Human(Human&& other) {
+        name = move(other.name);
+        age = other.age;
+        other.age = 0;
+    }
+
+
     Human(const Human& other) {
         name = other.name;
         age = other.age;
@@ -32,6 +39,23 @@ public:
 
     int getAge() {
         return age;
+    }
+
+    Human& operator=(const Human& other) {
+        if (this != &other) {
+            name = other.name;
+            age = other.age;
+        }
+        return *this;
+    }
+
+    Human& operator=(Human&& other) noexcept {
+        if (this != &other) {
+            name = std::move(other.name);
+            age = other.age;
+            other.age = 0;
+        }
+        return *this;
     }
 
 };
@@ -62,6 +86,14 @@ public:
         }
     }
 
+    Apartament(Apartament&& other) {
+        humans = other.humans;
+        count_of_humans = other.count_of_humans;
+        other.humans = nullptr;
+        other.count_of_humans = 0;
+    }
+
+
     int getCount() {
         return count_of_humans;
     }
@@ -75,10 +107,41 @@ public:
         }
     }
 
-
     ~Apartament() {
         delete[] humans;
     }
+
+    Apartament& operator=(const Apartament& other) {
+        if (this == &other) return *this;
+
+        delete[] humans;
+        humans = nullptr;
+        count_of_humans = 0;
+
+        count_of_humans = other.count_of_humans;
+        if (count_of_humans > 0) {
+            humans = new Human[count_of_humans];
+            for (int i = 0; i < count_of_humans; ++i) {
+                humans[i] = other.humans[i];
+            }
+        }
+        return *this;
+    }
+
+    Apartament& operator=(Apartament&& other) noexcept {
+        if (this == &other) return *this;
+
+        delete[] humans;
+
+        humans = other.humans;
+        count_of_humans = other.count_of_humans;
+
+        other.humans = nullptr;
+        other.count_of_humans = 0;
+
+        return *this;
+    }
+
 };
 
 int Apartament::quantity_of_apartaments = 0;
@@ -94,7 +157,6 @@ public:
             apartaments[i] = arr[i];
         }
     }
-
 
     House(const House& other) {
         count_of_apartaments = other.count_of_apartaments;
@@ -147,7 +209,7 @@ int main()
 
     int choose;
     while (true) {
-        print("\n===Меню===\nДобро пожаловать!\nВыберите опцию:\n1 - узнать о жильцах в квартирах\n2 - кол-во квартир в доме\n3 - кол-во людей в доме\n4 - Опция \"Новая квартира\" Ваш выбор: ");
+        print("\n===Меню===\nДобро пожаловать!\nВыберите опцию:\n1 - узнать о жильцах в квартирах\n2 - кол-во квартир в доме\n3 - кол-во людей в доме\n4 - Опция \"Новая квартира\"\n5 - Опция \"Переселение\"\n Ваш выбор: ");
         input choose;
         if (choose == 1) {
             int choose_flat;
@@ -198,8 +260,32 @@ int main()
                 print("На жильцов из квартиры 3 были записаны документы новой квартиры. Теперь согласно документам жильцы квартиры 6: ");
                 a3.getInfoOfApartament(6);
             }
-
-            
+        }
+        else if (choose == 5) {
+            Apartament a4;
+            Apartament a5;
+            Apartament a6;
+            int choose_to_move_peoples;
+            print("Людей из какой квартиры вы хотите переселить?\n1 - из первой.\n2 - из второй.\n3 - из третьей.\n");
+            input choose_to_move_peoples;
+            if (choose_to_move_peoples == 1) {
+                Apartament newFlat;
+                newFlat = move(a1);
+                print("Жильцы переехали. Старая квартира теперь пустая. Жильцы новой квартиры: ");
+                newFlat.getInfoOfApartament(4);
+            }
+            if (choose_to_move_peoples == 2) {
+                Apartament newFlat2;
+                newFlat2 = move(a2);
+                print("Жильцы переехали. Старая квартира теперь пустая. Жильцы новой квартиры: ");
+                newFlat2.getInfoOfApartament(5);
+            }
+            if (choose_to_move_peoples == 3) {
+                Apartament newFlat3;
+                newFlat3 = move(a3);
+                print("Жильцы переехали. Старая квартира теперь пустая. Жильцы новой квартиры: ");
+                newFlat3.getInfoOfApartament(6);
+            }
         }
     }
 
@@ -210,6 +296,3 @@ int main()
 
     return 0;
 }
-
-   
-
