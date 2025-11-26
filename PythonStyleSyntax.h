@@ -1,12 +1,11 @@
-﻿#pragma once
-
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <windows.h>
 #include <string>
 #define input cin >>
-#define enter cout << endl
 using namespace std;
 
 template <typename O>
