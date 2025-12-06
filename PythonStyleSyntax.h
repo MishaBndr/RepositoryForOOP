@@ -1,11 +1,10 @@
 #pragma once
 
 #include <iostream>
-
-#define input(var) std::cin >> var;
+#define input(x) std::cin >> x
 
 template <typename T>
-
-void print(const T& value) {
-	std::cout << value << std::endl;
-};
+void print(const T& x)
+{
+	std::cout << x << std::endl;
+}
