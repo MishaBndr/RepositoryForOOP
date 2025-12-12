@@ -1,16 +1,17 @@
 ﻿#include <iostream>
 #include <filesystem>
 #include <fstream>
+
 using namespace std;
 using namespace filesystem;
 
-// Базовый класс для операций с файловой системой
+// Класс для базовых операций с файловой системой
 class FileSystemObject {
 protected:
-    path p; // путь
+    path p;
 public:
     FileSystemObject(const path& p) : p(p) {}
-    virtual void info() = 0; // получить информацию
+    virtual void info() = 0;
 };
 
 // Класс для папок
@@ -73,7 +74,7 @@ public:
 class FileManager {
 public:
     void showDisks() {
-        cout << "Диски: C:\\\n"; // Упрощённо
+        cout << "Диски: C:\\\n";
     }
 
     void showDirectory(const path& p) {
@@ -139,36 +140,54 @@ int main() {
             fm.showDirectory("C:/");
         }
         else if (choose == 2) {
-            cout << "1 — Папка, 2 — Файл: ";
-            int t; cin >> t;
-            path p; string name;
-            cout << "Введите путь: "; cin >> p;
-            cout << "Введите имя: "; cin >> name;
-            if (t == 1) fm.createDirectory(p, name);
-            else fm.createFile(p, name);
+            cout << "Что вы желаете создать?\n1 - Папку.\n2 - Файл.";
+            int t; 
+            cin >> t;
+            path p; 
+            string name;
+            cout << "Введите путь: "; 
+            cin >> p;
+            cout << "Введите имя: "; 
+            cin >> name;
+            if (t == 1) {
+                fm.createDirectory(p, name);
+            }
+            else {
+                fm.createFile(p, name);
+            }
         }
         else if (choose == 3) {
-            cout << "1 — Папка, 2 — Файл: ";
-            int t; cin >> t;
-            path p; string name;
-            cout << "Введите путь: "; cin >> p;
-            cout << "Введите имя: "; cin >> name;
+            cout << "Что вы желаете удалить?\n1 - Папку.\n2 - Файл.";
+            int t; 
+            cin >> t;
+            path p; 
+            string name;
+            cout << "Введите путь: "; 
+            cin >> p;
+            cout << "Введите имя: "; 
+            cin >> name;
             if (t == 1) fm.removeDirectory(p, name);
             else fm.removeFile(p, name);
         }
         else if (choose == 4) {
-            cout << "1 — Папка, 2 — Файл: ";
-            int t; cin >> t;
-            path p; string name;
-            cout << "Введите путь: "; cin >> p;
-            cout << "Введите новое имя: "; cin >> name;
+            cout << "Что вы желаете переименовать?\n1 - Папку.\n2 - Файл.";
+            int t; 
+            cin >> t;
+            path p; 
+            string name;
+            cout << "Введите путь: "; 
+            cin >> p;
+            cout << "Введите новое имя: "; 
+            cin >> name;
             if (t == 1) fm.renameDirectory(p, name);
             else fm.renameFile(p, name);
         }
         else if (choose == 5) {
             path from, to;
-            cout << "Введите путь источника: "; cin >> from;
-            cout << "Введите путь назначения: "; cin >> to;
+            cout << "Введите путь источника: "; 
+            cin >> from;
+            cout << "Введите путь назначения: "; 
+            cin >> to;
             fm.copyDirectory(from, to);
         }
 
